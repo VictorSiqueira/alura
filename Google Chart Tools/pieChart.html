@@ -1,0 +1,59 @@
+<html>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<head>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>		
+		<script type="text/javascript">
+			google.load('visualization','1',{'packages' : ['corechart']});
+			google.setOnLoadCallback(desenhaGrafico);
+
+			function desenhaGrafico(){
+				var data = new google.visualization.DataTable();
+				data.addColumn('string', 'Tipo');
+				data.addColumn('number', 'Valor');
+				data.addRows(4);
+
+				data.setValue(0, 0, 'Alimentação');
+				data.setValue(0,1, 853.0);
+
+				data.setValue(1, 0, 'Educação');
+				data.setValue(1,1, 457.0);
+
+				data.setValue(2, 0, 'Saúde');
+				data.setValue(2,1, 460.0);
+
+				data.setValue(3, 0, 'Combustivel');
+				data.setValue(3,1, 670.0);
+
+				var chart = new google.visualization.PieChart(
+					document.getElementById('myChart'));
+
+				var options ={
+					width:500,
+					height: 250,
+					title:'Gastos',
+					is3D: true
+				}
+				chart.draw(data,options);
+				// da para usar outros eventos alem do select
+				// como  'error, onmouseover, onmouseout, ready e select'
+				google.visualization.events.addListener(chart, 'select', avisoClique);
+
+				// a função tambem pode ser declarada fora desta function
+				function avisoClique(event){
+					var selecionados = chart.getSelection();
+	                var escolhido = selecionados[0].row;
+	                var tipoDeGasto = data.getFormattedValue(escolhido, 0);
+	                var valorGasto = data.getFormattedValue(escolhido, 1);
+	                document.getElementById('msg').innerHTML = "Gasto em " + tipoDeGasto + ": R$" + valorGasto + "<br>";
+				}
+			}
+
+			
+		</script>
+	</head>
+	<body>
+		<h1>Gastos por Mẽs</h1>
+		<div id="myChart"></div>
+		<div id="msg"></div>
+	</body>
+</html>

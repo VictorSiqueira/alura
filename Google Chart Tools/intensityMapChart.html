@@ -1,0 +1,61 @@
+<html>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<head>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>		
+		<script type="text/javascript">
+			google.load('visualization','1',{'packages' : ['intensityMap']});
+			google.setOnLoadCallback(desenhaGrafico);
+
+			function desenhaGrafico(){
+				var data = new google.visualization.DataTable();
+				data.addColumn('string', 'Pais');
+				data.addColumn('number', 'População');
+				data.addColumn('number', 'Área');
+
+				data.addRows(7);
+
+                data.setValue(0, 0, 'BR');//Brasil
+                data.setValue(0, 1, 8515);
+                data.setValue(0, 2, 190732);
+                
+                data.setValue(1, 0, 'CO');//Colômbia
+                data.setValue(1, 1, 1138);
+                data.setValue(1, 2, 45986);
+                
+                data.setValue(2, 0, 'PE');//Peru
+                data.setValue(2, 1, 1285);
+                data.setValue(2, 2, 29461);
+                
+                data.setValue(3, 0, 'UY');//Uruguai
+                data.setValue(3, 1, 176);
+                data.setValue(3, 2, 3356);
+                
+                data.setValue(4, 0, 'AR');//Argentina
+                data.setValue(4, 1, 2766);
+                data.setValue(4, 2, 40091);
+                
+                data.setValue(5, 0, 'VE');//Venezuela
+                data.setValue(5, 1, 912);
+                data.setValue(5, 2, 29223);
+                
+                data.setValue(6, 0, 'CL');//Chile
+                data.setValue(6, 1, 756);
+                data.setValue(6, 2, 17231);
+
+				var chart = new google.visualization.IntensityMap(
+					document.getElementById('myChart'));
+				//setando valores para renderizaao
+
+				var options ={					
+					region: 'south_america'
+				}
+				chart.draw(data,options);
+
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Gastos por Mês</h1>
+		<div id="myChart"></div>
+	</body>
+</html>

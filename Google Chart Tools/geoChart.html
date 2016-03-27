@@ -1,0 +1,42 @@
+<html>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<head>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>		
+		<script type="text/javascript">
+			google.load('visualization','1',{'packages' : ['geochart']});
+			google.setOnLoadCallback(desenhaGraficoEstados);
+
+ 			function desenhaGraficoEstados() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Estado');
+                data.addColumn('number', 'População (hab)');
+                data.addRows(6);
+                
+                data.setValue(0, 0, 'BR-SP');
+                data.setValue(0, 1, 41589892);
+                
+                data.setValue(1, 0, 'BR-ES');
+                data.setValue(1, 1, 3547013);
+                
+                data.setValue(2, 0, 'BR-CE');
+                data.setValue(2, 1, 8530058);
+                
+                data.setValue(3, 0, 'BR-AM');
+                data.setValue(3, 1, 3538359);
+                
+                data.setValue(4, 0, 'BR-RS');
+                data.setValue(4, 1, 10732770);
+                
+                data.setValue(5, 0, 'BR-BA');
+                data.setValue(5, 1, 14097333);
+
+				var chart = new google.visualization.GeoChart(document.getElementById('myChart'));
+                chart.draw(data, {region : 'BR', resolution: 'provinces'});
+            };
+		</script>
+	</head>
+	<body>
+		<h1>Gastos por Mês</h1>
+		<div id="myChart"></div>
+	</body>
+</html>

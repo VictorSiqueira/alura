@@ -1,0 +1,28 @@
+<html>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<head>
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>		
+		<script type="text/javascript">
+			google.load('visualization','1',{'packages' : ['corechart']});
+			google.setOnLoadCallback(desenhaGrafico);
+
+ 			function desenhaGrafico() {
+                var wrapper = new google.visualization.ChartWrapper({
+                    //dataSourceUrl : 'https://raw.github.com/caelum/caelum-online/master/google-chart-tools/07-dados.json',
+                    dataSourceUrl : 'https://spreadsheets.google.com/tq?key=pCQbetd-CptGXxxQIG7VFIQ&range=B1:D11&pub=1',
+                    //para alterar o tipo de grafico a ser exibido basta alterar aqui
+                    //chartType : 'AreaChart',
+                    chartType : 'BarChart',
+                    containerId : 'myChart',
+                    options : { width: 900 , height: 300 }
+                });
+
+                wrapper.draw();
+            };
+		</script>
+	</head>
+	<body>
+		<h1>Gastos por Mês</h1>
+		<div id="myChart"></div>
+	</body>
+</html>

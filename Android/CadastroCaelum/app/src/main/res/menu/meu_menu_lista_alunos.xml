@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_novo"
+        android:title="Novo"
+        android:showAsAction="always"
+        android:icon="@drawable/adduser"/>
+
+    <item android:id="@+id/mais_opt"
+        android:title="Mais Opções"
+        android:icon="@drawable/menu"
+        android:showAsAction="always">
+        <menu>
+            <item android:id="@+id/menu_mapa"
+                android:showAsAction="always"
+                android:title="Mapa"/>
+
+            <item android:id="@+id/menu_enviar_alunos"
+                android:showAsAction="always"
+                android:title="Enviar Alunos"/>
+
+            <item android:id="@+id/menu_receber_alunos"
+                android:showAsAction="always"
+                android:title="Receber Alunos"/>
+
+            <item android:id="@+id/menu_preferencias"
+                android:showAsAction="always"
+                android:title="Preferencias"/>
+        </menu>
+    </item>
+</menu>

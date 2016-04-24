@@ -1,9 +1,11 @@
 package com.cadastrocaelum.utils.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by Victor on 23/04/2016.
  */
-public class Aluno {
+public class Aluno implements Serializable {
     private Integer id;
     private String nome;
     private String site;

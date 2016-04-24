@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Intent i = new Intent(this, ListaAlunosAcitivty.class);
         startActivity(i);
+        finish();
     }
 
     @Override

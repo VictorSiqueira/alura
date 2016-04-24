@@ -73,4 +73,23 @@ public class AlunoDAO extends SQLiteOpenHelper{
         }
         return lista;
     }
+
+    public void deletar(Aluno aluno) {
+        String[] args = {aluno.getId().toString()};
+        //delete(TABELA,WHERE,VALORES DO WHERE);
+        getWritableDatabase().delete(TABELA,"id=?",args);
+    }
+
+    public void update(Aluno aluno) {
+        ContentValues contentValues = new ContentValues(); //faz o mesmo papel que o hibernate
+        contentValues.put("nome",aluno.getNome());
+        contentValues.put("telefone",aluno.getTelefone());
+        contentValues.put("endereco",aluno.getEndereco());
+        contentValues.put("site",aluno.getSite());
+        contentValues.put("nota",aluno.getNota());
+        contentValues.put("caminhoFoto", "--");
+        //insert(nome da tabela, valores para atualizar ,qual ocorrencia quer atualizar, );
+        String[] args = {aluno.getId().toString()};
+        getWritableDatabase().update(TABELA, contentValues , "id=?", args);
+    }
 }

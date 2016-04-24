@@ -25,6 +25,10 @@ public class FormularioHelper {
         getElementsOfActivity(activity);
     }
 
+    /**
+     * metodo para pegar todos os elementos da tela e seta-los nas
+     * variaveis corretamente
+     */
     private void getElementsOfActivity(Activity activity) {
         edtNome = (EditText)activity.findViewById(R.id.edtNome);
         edtSite = (EditText)activity.findViewById(R.id.edtNome);
@@ -34,6 +38,11 @@ public class FormularioHelper {
         ratNota = (RatingBar) activity.findViewById(R.id.nota);
     }
 
+    /**
+     * Metodo que recupera os dados da activity e monta um Aluno para
+     * ser tratado pelo DAO
+     * @return
+     */
     public Aluno getAlunoFromFormularioActivity(){
         String nome = edtNome.getText().toString();
         String site = edtSite.getText().toString();
@@ -41,5 +50,18 @@ public class FormularioHelper {
         String telefone = edtTelefone.getText().toString();
         Float nota = ratNota.getRating();
         return new Aluno(nome, site, endereco,telefone, nota);
+    }
+
+    /**
+     * metodo para setar nos campos do formulario os dados de
+     * um usuario passado no paramento, verficado se cada item ta nulo
+     * @param aluno
+     */
+    public void setAluno2UpdateOnFormulario(Aluno aluno) {
+        if(aluno.getNome() != null) edtNome.setText(aluno.getNome());
+        if(aluno.getSite() != null)edtSite.setText(aluno.getSite());
+        if(aluno.getEndereco() != null)edtEndereco.setText(aluno.getEndereco());
+        if(aluno.getTelefone() != null)edtTelefone.setText(aluno.getTelefone());
+        if(aluno.getNota() != null)ratNota.setRating(aluno.getNota());
     }
 }

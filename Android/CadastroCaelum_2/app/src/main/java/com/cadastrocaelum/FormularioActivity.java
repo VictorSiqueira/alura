@@ -1,6 +1,9 @@
 package com.cadastrocaelum;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,14 +11,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 
 import com.cadastrocaelum.dao.AlunoDAO;
 import com.cadastrocaelum.utils.helper.FormularioHelper;
 import com.cadastrocaelum.utils.pojo.Aluno;
 
+import java.io.File;
+
 public class FormularioActivity extends AppCompatActivity {
 
+    ImageView foto;
     EditText edtNome;
     EditText edtSite;
     EditText edtEndereco;
@@ -23,6 +30,8 @@ public class FormularioActivity extends AppCompatActivity {
     Button btnSalvar;
     RatingBar ratNota;
     FormularioHelper helper;
+    private String caminhoFt;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +65,27 @@ public class FormularioActivity extends AppCompatActivity {
                 goToListAlunos();
             }
         });
+
+        ImageView foto = helper.getFoto();
+        foto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); // armazena a parte de media do Android
+                caminhoFt = getExternalFilesDir(null)+ "/"+System.currentTimeMillis()+"img.png";
+                File Aqruivo = new File(caminhoFt);
+                Uri localFoto = Uri.fromFile(Aqruivo);
+                i.putExtra(MediaStore.EXTRA_OUTPUT, localFoto);
+                startActivityForResult(i, 123);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == Activity.RESULT_OK){
+            helper.carregaImagem(caminhoFt);
+        }
     }
 
     @Override
@@ -89,10 +119,11 @@ public class FormularioActivity extends AppCompatActivity {
      */
     private void getElementsOfActivity() {
         edtNome = (EditText)findViewById(R.id.edtNome);
-        edtSite = (EditText)findViewById(R.id.edtNome);
-        edtEndereco = (EditText)findViewById(R.id.edtNome);
-        edtTelefone = (EditText)findViewById(R.id.edtNome);
+        edtSite = (EditText)findViewById(R.id.edtSite);
+        edtEndereco = (EditText)findViewById(R.id.edtEndereco);
+        edtTelefone = (EditText)findViewById(R.id.edtTelefone);
         btnSalvar = (Button) findViewById(R.id.btnSalvar);
         ratNota = (RatingBar) findViewById(R.id.nota);
+        foto = (ImageView)findViewById(R.id.foto);
     }
 }

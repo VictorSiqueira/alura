@@ -37,9 +37,9 @@ public class FormularioHelper {
      */
     private void getElementsOfActivity(Activity activity) {
         edtNome = (EditText)activity.findViewById(R.id.edtNome);
-        edtSite = (EditText)activity.findViewById(R.id.edtNome);
-        edtEndereco = (EditText)activity.findViewById(R.id.edtNome);
-        edtTelefone = (EditText)activity.findViewById(R.id.edtNome);
+        edtSite = (EditText)activity.findViewById(R.id.edtSite);
+        edtEndereco = (EditText)activity.findViewById(R.id.edtEndereco);
+        edtTelefone = (EditText)activity.findViewById(R.id.edtTelefone);
         btnSalvar = (Button) activity.findViewById(R.id.btnSalvar);
         ratNota = (RatingBar) activity.findViewById(R.id.nota);
         foto = (ImageView )activity.findViewById(R.id.foto);

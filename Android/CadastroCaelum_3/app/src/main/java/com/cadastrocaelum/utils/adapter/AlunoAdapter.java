@@ -49,17 +49,39 @@ public class AlunoAdapter extends BaseAdapter {
         LayoutInflater layoutInflater= activty.getLayoutInflater();
         View linha = layoutInflater.inflate(R.layout.item, null);//segundo parametro serviria se ele estive dentro de outo inflate
 
+        //lyout normal
         TextView nome = (TextView)linha.findViewById(R.id.nomeLista);
-        nome.setText(listaAlunos.get(position).getNome());
+        ImageView foto = (ImageView) linha.findViewById(R.id.fotoLista);
+        if(nome !=null) {
+            nome.setText(listaAlunos.get(position).getNome());
+            if (listaAlunos.get(position).getFoto() != null) {
+                Bitmap imagem = BitmapFactory.decodeFile(listaAlunos.get(position).getFoto());
+                Bitmap imagemReduzida = Bitmap.createScaledBitmap(imagem, 100, 100, true);
+                foto.setImageBitmap(imagemReduzida);
+            } else {
+                foto.setImageResource(R.drawable.alura);
+            }
+        }
 
-        /*ImageView foto = (ImageView) linha.findViewById(R.id.fotoLista);
-        if(listaAlunos.get(position).getFoto() != null){
-            Bitmap imagem = BitmapFactory.decodeFile(listaAlunos.get(position).getFoto());
-            Bitmap imagemReduzida = Bitmap.createScaledBitmap(imagem, 100, 100, true);
-            foto.setImageBitmap(imagemReduzida);
-        }else {
-            foto.setImageResource(R.drawable.alura);
-        }*/
+        //esse item existe apenas no landscape, pode até por o mesmo nomde de id para facilitar a vida
+        ImageView txtFoto = (ImageView)linha.findViewById(R.id.land_fotoLista);
+        TextView txtNome = (TextView)linha.findViewById(R.id.land_nomeLista);
+        TextView txtSite = (TextView)linha.findViewById(R.id.land_siteLista);
+        TextView txtTel = (TextView)linha.findViewById(R.id.land_telLista);
+        if(txtTel != null){
+            txtTel.setText(listaAlunos.get(position).getTelefone());
+            txtNome.setText(listaAlunos.get(position).getNome());
+            txtSite.setText(listaAlunos.get(position).getSite());
+            txtTel.setText(listaAlunos.get(position).getTelefone());
+            if(listaAlunos.get(position).getFoto() != null){
+                Bitmap imagem = BitmapFactory.decodeFile(listaAlunos.get(position).getFoto());
+                Bitmap imagemReduzida = Bitmap.createScaledBitmap(imagem, 100, 100, true);
+                txtFoto.setImageBitmap(imagemReduzida);
+            }else {
+                txtFoto.setImageResource(R.drawable.alura);
+            }
+        }
+
         return linha;
     }
 }

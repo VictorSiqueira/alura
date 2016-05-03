@@ -24,6 +24,7 @@ import java.util.List;
 public class ListaAlunosAcitivty extends AppCompatActivity {
     ListView lista;
     Aluno aluno;
+    List<Aluno> listaAlunos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +66,7 @@ public class ListaAlunosAcitivty extends AppCompatActivity {
      */
     private void carregaLista() {
         AlunoDAO dao = new AlunoDAO(this);
-        List<Aluno> listaAlunos = dao.getAllAlunos();
+        listaAlunos = dao.getAllAlunos();
         dao.close();
         //new ArrayAdapter<>(Contexto,layout da cedula, Array);
         final AlunoAdapter adapter = new AlunoAdapter(this,listaAlunos); // modelo de cada item da tela
@@ -96,7 +97,7 @@ public class ListaAlunosAcitivty extends AppCompatActivity {
         int id = item.getItemId();
         switch (id){
             case R.id.menu_novo :
-                gotToFormulario(null);
+                gotToFormulario(listaAlunos.get(id));
                 break;
             case R.id.menu_enviar_alunos:
                 new EnviaContatoTask(this).execute();

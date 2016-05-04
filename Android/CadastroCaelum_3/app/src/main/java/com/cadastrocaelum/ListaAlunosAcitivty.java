@@ -97,10 +97,14 @@ public class ListaAlunosAcitivty extends AppCompatActivity {
         int id = item.getItemId();
         switch (id){
             case R.id.menu_novo :
-                gotToFormulario(listaAlunos.get(id));
+                gotToFormulario(null);
                 break;
             case R.id.menu_enviar_alunos:
                 new EnviaContatoTask(this).execute();
+                break;
+            case R.id.menu_provas:
+                Intent i = new Intent(this,ProvasActivity.class);
+                startActivity(i);
                 break;
             default:
                 break;

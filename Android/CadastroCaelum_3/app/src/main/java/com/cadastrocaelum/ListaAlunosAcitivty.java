@@ -102,6 +102,10 @@ public class ListaAlunosAcitivty extends AppCompatActivity {
             case R.id.menu_enviar_alunos:
                 new EnviaContatoTask(this).execute();
                 break;
+            case R.id.menu_mapa:
+                Intent map = new Intent(this,MostraAlunosProximosActivity.class);
+                startActivity(map);
+                break;
             case R.id.menu_provas:
                 Intent i = new Intent(this,ProvasActivity.class);
                 startActivity(i);

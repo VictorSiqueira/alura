@@ -2,6 +2,7 @@ package com.cadastrocaelum.utils.fragments;
 
 import com.cadastrocaelum.dao.AlunoDAO;
 import com.cadastrocaelum.utils.pojo.Aluno;
+import com.cadastrocaelum.utils.support.AtualizadorDeLocalizacao;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -19,8 +20,8 @@ public class MapFragment extends SupportMapFragment {
     public void onResume() {
         super.onResume();
         Localizador localizador = new Localizador(getActivity());// para pegar contexto da activity mae
-        LatLng local = localizador.getCoordenada("Rua Vergueiro, 3185, Vila Mariana");
-        centraliza(local);
+
+        new AtualizadorDeLocalizacao(getActivity(),this);
 
         AlunoDAO dao = new AlunoDAO(getActivity());
         List<Aluno> alunos = dao.getAllAlunos();

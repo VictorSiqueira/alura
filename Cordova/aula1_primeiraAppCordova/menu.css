@@ -1,0 +1,106 @@
+/* funcionamento */
+
+/*O caracter "~" indica que se a partir do seletor da esquerda,
+o seletor da direita ira receber o estilo especificado, no caso 
+se um for selecionado o da direita ira sumir com o display none*/
+#opcao-bolos:checked ~ #menu-bebidas,
+#opcao-bebidas:checked ~ #menu-bolos {
+    display: none;
+}
+
+/*para deixar mais "bonitinho" a seleção dos inputs é possivel esconder,
+e desde que use um label corretamente identificado no html referente ao
+input que será escodindo, nao se perde o clique, a opçao continua aparecendo
+e clique funciona normalmente em cima do contudo do label, no caso, esta
+escondendo todos os inputs do tipo radio da tela*/
+input[type=radio] {
+    display: none;
+}
+
+
+.menu {
+    width: 100%;
+}
+
+/* decoracao */
+body {
+    background: #3D1A11;
+    font-family: sans-serif;
+    margin: 0;
+    text-align: center;
+}
+
+label {
+    background: center top no-repeat #563429;
+    background-size: 4em;
+    color: white;
+    display: block;
+    font-size: 75%;
+    padding: 4em 0 1em;
+    text-transform: uppercase;
+}
+    /*seleção por label e atributo do label, no caso o atributo "for" que 
+    tenha o valor "opcao-bolos"*/
+    label[for=opcao-bolos] {
+        background-image: url(imagens/icone-bolos.svg);
+    }
+    label[for=opcao-bebidas] {
+        background-image: url(imagens/icone-bebidas.svg);
+    }
+    
+    /*o seletor "+" funciona pa identifcar que o irmao seguinte ao elemento
+    identificado, ou seja, que esteja no mesmo nivel na identação e logo
+    abaixo na escrita*/
+    :checked + label {
+        background-color: #E4876D;
+    }
+
+/* posicionamento */
+label {
+    width: 50%;
+
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+}
+    label[for=opcao-bolos] {
+        left: 0;
+    }
+    label[for=opcao-bebidas] {
+        right: 0;
+    }
+
+.menu {
+    margin-bottom: 100px;
+}
+
+/* animado */
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+.container-menus {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    -webkit-transition: transform 300ms ease;
+            transition: -webkit-transform 300ms ease;
+    width: 200%;
+}
+
+.container-menus .menu {
+    float: left;
+    width: 50%;
+}
+
+#opcao-bebidas:checked ~ .container-menus {
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+}
+
+/* hack android velho */
+body { -webkit-animation: bugfix infinite 1s; }
+@-webkit-keyframes bugfix {
+  from { padding: 0; }
+  to { padding: 0; }
+}

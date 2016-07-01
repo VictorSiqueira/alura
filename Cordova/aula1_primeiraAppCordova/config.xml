@@ -1,0 +1,41 @@
+<?xml version="1.0" enconding="UTF-8" ?>
+<widget xmlns="http://www.w3.org./ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" version="1.0" id="org.victorsiqueira.cenourapp">
+
+	<name>Só de cenoura</name>
+	<description>menu do restaurante</description>
+	<author href="http://sergiolopes.org" email="victorsiqueiraj@gmail.com"> Victor Siqueira</author>
+	
+	<!-- definição de icone-->
+	<icon src="icon.png"/>
+	<!-- para usar splash screen na inicialização do app-->
+	<gap:splash src="splash.png"/>
+
+	<preference name="orientation" value="portrait" />
+	<preference name="fullscreen" value="true"/>
+	
+	<!-- quando declarado somente ele, restringe para apenas android-->
+	<gap:platform name="android"/>
+	
+	<!-- como nao esta fazendo nada, ele desabilita a solicitação de permissoes, 
+	afinal nao precisa para essa app simples-->
+	<preference name="permissions" value="none" />
+
+</widget>
+
+<!--
+O Build tem outros serviços que podem ser interessantes em certos casos.
+
+   - PhoneGap CLI: 
+   		acesso ao Build por linha de comando para não precisar fazer upload manual no site;
+   - Uso de plugins: 
+   		todo plugin Cordova ou PhoneGap direto na nuvem;
+   - Hydration: 
+   		update automático do código HTML das Apps usando servidor da Adobe sem o cliente reinstalar a App;
+   - Debug Remoto: 
+   		com Weinre, direto nos servidores da Adobe;
+   - Assinatura dos binários: p
+   		ara distribuição final nas lojas.
+
+   	Na documentação deles, você pode ver mais sobre esses serviços: http://docs.build.phonegap.com/
+
+-->

@@ -1,0 +1,24 @@
+instalar nodejs ==========================
+
+seguir os passos do link
+https://www.digitalocean.com/community/tutorials/como-instalar-o-node-js-em-um-servidor-ubuntu-14-04-pt
+
+caso nao funcione seguir esse
+http://www.hostingadvice.com/how-to/install-nodejs-ubuntu-14-04/
+
+node -v = verificar a versao do node para ter certeza que foi instaldo certo
+
+instalar cordova =========================
+
+sudo npm -g install cordova 
+cordova -v = verificar a versao do cordova para ter certeza que foi instaldo certo
+
+criar projeto ============================
+
+cordova create <nomeDoApp> <nomeDoPackagePrincipal> <aliasDoApp> = cria um app na pasta onde estiver, ja buildado para o cordova, o alias é o que vai aparecer para o usuario
+
+cordova add platform <nomeDaPlataforma> = adiciona plataformas para o app rodar em cima, pode ser "android", "windows", "browser", etc...
+
+cordova run <nomeDaPlataforma> = dispara o run em cima de um emulador correspondente a plataforma declarada
+
+cordova run <nomeDaPlataforma> --device = dispara o run em cima de um dispositivo correspondente a plataforma declarada

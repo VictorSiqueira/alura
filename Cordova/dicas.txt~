@@ -1,0 +1,8 @@
+1 - é possivel abrir o projeto nos emuladores das IDEs normais de desenvolvimento, como AndroidStudio e Xcode
+2 - um projeto gerado localmente em cordova, nao da upload no phonegap builder da abode que fica online, buga
+3 - ir no site do Cordova, na parte de olugins, tem muitos la 
+https://cordova.apache.org/plugins/
+	- corodova-plugin-statusbar = coloca a cor desejada no todo da app, e corrige o posicionamento na tela
+	- phonegap-plugin-barcodescanner = leitor de codigo de barras e qrcode, atraves da camera
+	- cordova-plugin-whitelist = habilita o uso de acesso remoto a servidores das Apis, o famoso CORS
+	- cordova-plugin-vibration = habilita vibração

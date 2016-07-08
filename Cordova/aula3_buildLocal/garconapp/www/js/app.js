@@ -74,8 +74,7 @@ $('.acao-finalizar').on('click', function() {
         },
         success: function(dados) {
             Materialize.toast(dados, 2000);
-
-            $('#numero-mesa').val('');
+            $('#numeroMesa').val('');
             $('.badge').remove();
         }
     }); 

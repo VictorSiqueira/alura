@@ -6,3 +6,25 @@ https://cordova.apache.org/plugins/
 	- phonegap-plugin-barcodescanner = leitor de codigo de barras e qrcode, atraves da camera
 	- cordova-plugin-whitelist = habilita o uso de acesso remoto a servidores das Apis, o famoso CORS
 	- cordova-plugin-vibration = habilita vibração
+
+
+===============================================================
+
+Whitelist
+
+É precido listar no config.xml todas as origens (domínios) que queremos liberar acesso. Para liberar nossa API back-end, colocamos:
+
+<access origin="http://cozinhapp.sergiolopes.org" />
+
+A tag access recebe uma origem. Você pode usar asteriscos para vários subdomínios - por exemplo, http://*.sergiolopes.org. Você pode também listar subpastas apenas, ou até liberar para todas as URLs do mundo colocando apenas *, o que não é uma boa ideia, a menos que realmente precise.
+
+Coloque então essa tag access no config.xml, liberando nosso back-end. Depois, teste a App no aparelho novamente. Tudo deve funcionar agora
+
+Nossa App usa apenas o whitelist de chamadas Ajax. Entretanto, há outras configurações possíveis com esse plugin.
+
+Também podemos listar quais URLs devem ser tratadas pelo sistema operacional, e não pelo navegador. É o que chamamos de Intents. Certas URLs especiais podem abrir Apps nativas do sistema, e precisamos liberar quais queremos. Por exemplo, podemos liberar links em URLs do tipo tel: para abrir o discador nativo:
+
+<allow-intent href="tel:*" />
+
+Você não precisa submeter a resposta desse exercício. 
+

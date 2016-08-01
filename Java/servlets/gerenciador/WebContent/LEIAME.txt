@@ -1,0 +1,4 @@
+na pasta web inf há um arquivo "web.xml" , 
+la existe diversas configrações para rodar o projeto na web,
+um deles é a definição  <welcome-file-list>, nela fica declarada o
+arquivo padrao a ser procurado como pagina principal

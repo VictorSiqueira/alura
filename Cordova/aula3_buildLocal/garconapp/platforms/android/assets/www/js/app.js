@@ -1,3 +1,7 @@
+$(document).ready(function(){
+	navigator.vibrate(3000);//vibração do plugin
+})
+
 $('.collection-item').on('click', function(){
 	var badge = $('.badge', this); //busca elemento dentro do collection
 	if(badge.length == 0){
@@ -70,8 +74,7 @@ $('.acao-finalizar').on('click', function() {
         },
         success: function(dados) {
             Materialize.toast(dados, 2000);
-
-            $('#numero-mesa').val('');
+            $('#numeroMesa').val('');
             $('.badge').remove();
         }
     }); 

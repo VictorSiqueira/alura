@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	teste
+	<ul>
+	<%for(i in lista){%><!-- utilização de javascript para dinamizar as html com ejs -->
+		<li><%=lista[i].id%> - <%=lista[i].titulo%> - <%=lista[i].descrição%> - <%=lista[i].preco%></li>
+	<%}%>
+	</ul>
+</body>
+</html>

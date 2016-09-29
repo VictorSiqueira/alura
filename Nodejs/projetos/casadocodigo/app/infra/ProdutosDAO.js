@@ -17,6 +17,12 @@ ProdutosDAO.prototype.lista = function(callback){
 	});*/
 }
 
+ProdutosDAO.prototype.salva = function(produto, callback){
+	// o set insere um conjunto de valores e suas colunas, no caso o json identico
+	//mas funciona bem parecido com o preparedStatement do jdbc
+	this._connection.query('Insert into livros set ?', produto,callback);
+}
+
 module.exports = function(){
 	//aninhamento para possibilitar o objeto receber o parametro na sua cri~ção, praticamente um construtor
 	//foi feito dessa forma para que evite undefined durante o carregamento do express-load 

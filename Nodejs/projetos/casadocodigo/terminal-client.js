@@ -25,7 +25,7 @@ var client = http.request(configuracoes, function(res){
 });
 
 var produto = {
-	titulo: "teste terminal",
+	titulo: "",
 	descricao: "descricao terminal",
 	preco: 200
 }

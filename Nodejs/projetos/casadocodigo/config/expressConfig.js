@@ -1,6 +1,7 @@
 var express = require('express');
 var load = require('express-load');
 var bodyParser = require('body-parser');//lib que traduz o objeto que vem no request de um form 
+var expressValidator =  require('express-validator');//validator de objetos em requisição
 
 //modularização seguindo o padrão do CommonJS
 /* CommonJS é uma convenção para carregamentos de módulos javascript em aplicações server-side. 
@@ -20,6 +21,7 @@ module.exports = function(){
 	//obtendo o objeto vindo de um request de um form por exemplo
 	server.use(bodyParser.urlencoded({extended: true}));//o parametro extended com o valor true, serve pro parser compreender formularios complexos
 	server.use(bodyParser.json());//fazendo a aplicação permitir receber json
+	server.use(expressValidator())//fazendo a plicaço utilizador o validator para requisições
 	//pré carregamento de todos arquivos que estiverem na pasta 'routes'
 	load('routes', {cwd : 'app'})//cwd restringe a busca dos arquivos para a pasta que está declarada nele
 	.then('infra')//carregamento posterior de arquivo

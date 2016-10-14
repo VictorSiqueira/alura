@@ -13,8 +13,18 @@ pois pra producao ele faz algumas otimizações como deixar as views em cache pa
 					password: "",
 					database : "nodejs"
 				});
+		
+	//comando para windows not termial, caso nao seja nao precisa usar set e nem node, associe a variavel direto e rode o mocha
+	//SET NODE_ENV=test 
+	//node node_modules/mocha/bin/mocha
 	}else if(process.env.NODE_ENV == 'test'){
-
+		console.log('conexao com DB de teste');
+		return  mysql.createConnection({
+					host : "localhost",
+					user: "root",
+					password: "",
+					database : "nodejs_test"
+				});
 	}
 }
 

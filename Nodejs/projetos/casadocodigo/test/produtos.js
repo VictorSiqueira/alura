@@ -40,6 +40,19 @@ isso faz com que nao seja mais necessario subir as instacias de server para real
 pois ele ja estara fazendo issso para fazer as requisições*/
 var request = require('supertest')(express);
 describe('#ProdutosController', function(){
+
+	//funcao que roda antes de cada teste
+	//no caso está limpando a base
+	//caso precise limpar uma base com tabelas mais complexas ou mais associações, usar a lib 'node-database-cleaner'
+	beforeEach(function(done){
+		var conn = express.infra.dbConnectionFactory();
+		conn.query('delete from livros', function(error, result){
+			if(!error){
+				done();
+			}
+		});
+	});
+
 	it('#listagem json', function(done){		
 		request.get('/produtos')//passando a rota que deseja testar
 			//objeto retornado para configuraçções relativas a chamada

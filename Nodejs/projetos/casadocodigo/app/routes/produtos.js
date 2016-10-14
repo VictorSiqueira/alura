@@ -10,6 +10,11 @@ module.exports = function(server){//modulo pode ser parametrizado, porem usando 
 		var ProdutosDAO = new server.infra.ProdutosDAO(connection); 
 
 		ProdutosDAO.lista(function(error, result){
+			//tratando o erro, é necessario para o uso do route e test unitario
+			if(error){
+				return next(error); //retorna o erro e com o status 500
+			}
+
 			//especificando o retorno a partir do headers de quem solicitou
 			res.format({
 				// caso estejam requerindo um html
